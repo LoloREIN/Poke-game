@@ -43,8 +43,11 @@
 		6E2C30402BEADFFA000E66FF = {
 			isa = PBXGroup;
 			children = (
+				6ECE83D52C13CA6100A5E506 /* Model */,
 				6ECE83D12C13C19C00A5E506 /* Graphs.swift */,
 				6ECE83CF2C13C18F00A5E506 /* SignUpview.swift */,
+				6ECE83D42C13CA4100A5E506 /* ViewModel */,
+				6ECE83D32C13CA3700A5E506 /* View */,
 				6ECE83CD2C13C17700A5E506 /* UserView.swift */,
 				6E2C305A2BF05EEC000E66FF /* network_manager.swift */,
 				6E2C304B2BEADFFA000E66FF /* poke-adventru */,
@@ -77,6 +80,27 @@
 				6E2C30532BEADFFB000E66FF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		6ECE83D32C13CA3700A5E506 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6ECE83D42C13CA4100A5E506 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6ECE83D52C13CA6100A5E506 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
