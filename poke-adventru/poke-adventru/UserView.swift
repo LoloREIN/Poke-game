@@ -25,7 +25,7 @@ struct UserView: View {
 
 
                 if let flagName = getFlagName(for: countryCode) {
-                    Image(systemName: flagName)
+                    Image(systemName: "flag")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 100, height: 60)
