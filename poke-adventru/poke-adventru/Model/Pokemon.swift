@@ -7,17 +7,37 @@
 
 import Foundation
 
-struct PokemonResponse: Codable {
-    let count: UInt32
-    let results: [Pokemon]
-}
-
-struct Pokemon: Codable, Identifiable {
-    let id = UUID()
+struct Pokemon:  Identifiable {
+    var id = UUID()
     let name: String
     let url: String
+    let types : [String]
+    let sprite : String
 }
 
 
+/*
+struct PokemonData: Codable {
+    let id: UInt32
+    //let sprite: String
+    //let stats: Stats
+    let abilities: [Ability]
+}
+ */
+/*
+struct Stats: Codable {
+    let hp: UInt8
+    let attack: UInt8
+    let defense: UInt8
+    let specialAttack: UInt8
+    let specialDefense: UInt8
+    let speed: UInt8
+}
+*/
+/*
+struct Ability: Codable {
+    let name: String
+}
+ */
 
 

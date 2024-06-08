@@ -18,6 +18,8 @@ struct PruebaAPI: View {
                     Text(pokemon.url)
                         .font(.subheadline)
                         .foregroundColor(.gray)
+                    Text(pokemon.types[0])
+                    Text(pokemon.sprite)
                 }
             }
             .navigationTitle("Pokémon List")
