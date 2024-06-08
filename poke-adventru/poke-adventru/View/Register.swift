@@ -2,9 +2,11 @@ import SwiftUI
 
 struct Register: View {
     var countries = ["🇲🇽", "🇫🇷", "🇯🇵", "🇹🇼"]
-    @State private var selectedCountry = "Red"
+    @StateObject var viewModel = Registrar()
+    @State private var selectedCountry = "🇲🇽"
     @State private var username: String = ""
     @State private var password: String = ""
+    @State private var showModal: Bool = false // Variable de estado para controlar el modal
     
     var body: some View {
         ZStack {
@@ -42,7 +44,6 @@ struct Register: View {
                 }
                 .padding(.horizontal, 20)
                 .padding(.top, 5)
-                
                 Text("Nacionalidad")
                     .foregroundColor(.white)
                     .fontWeight(.bold)
@@ -77,7 +78,6 @@ struct Register: View {
                         .font(.system(size: 24))
                         .multilineTextAlignment(.center)
                         .padding(5)
-                    
                 }
                 .padding(.horizontal, 20)
                 
@@ -88,7 +88,19 @@ struct Register: View {
                 }
                 .padding(.horizontal, 40)
                 
-                NavigationLink(destination: Text("Next View")) {
+                Button(action: {
+                    viewModel.score = 0
+                    viewModel.user = username
+                    viewModel.password = password
+                    if selectedCountry == "🇲🇽"{
+                        viewModel.country = "Mexico"
+                    }else{
+                        viewModel.country = "Fuchi"
+                    }
+                    viewModel.email = "0236847@gmail.com"
+                    viewModel.registrar_usuario()
+                    showModal = true
+                }) {
                     Text("Registrarse")
                         .fontWeight(.bold)
                         .padding(.horizontal, 20)
@@ -98,10 +110,59 @@ struct Register: View {
                         .cornerRadius(26)
                 }
                 .padding(.top)
+                .sheet(isPresented: $showModal) {
+                    WelcomeModal(showModal: $showModal)
+                }
                 
                 Spacer()
             }
         }
+    }
+}
+
+struct WelcomeModal: View {
+    @Binding var showModal: Bool
+    
+    var body: some View {
+        ZStack {
+            Color.black.edgesIgnoringSafeArea(.all)
+            VStack {
+                Image("icon")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 150, height: 150)
+                    .cornerRadius(20)
+                    .padding(.top, 40)
+                
+                Text("Bienvenido")
+                    .font(.title)
+                    .padding(.bottom)
+                    .foregroundColor(.white)
+                
+                Text("Bienvenido a Pokélect, da click en comenzar para iniciar tu aventura.")
+                    .multilineTextAlignment(.center)
+                    .padding()
+                    .foregroundColor(.white)
+                
+                Button(action: {
+                    showModal = false
+                }) {
+                    Text("Comenzar")
+                        .padding()
+                        .background(Color.green)
+                        .foregroundColor(.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                }
+                .padding()
+            }
+            .padding()
+        }
+    }
+}
+
+struct WelcomeModal_Previews: PreviewProvider {
+    static var previews: some View {
+        WelcomeModal(showModal: .constant(true))
     }
 }
 

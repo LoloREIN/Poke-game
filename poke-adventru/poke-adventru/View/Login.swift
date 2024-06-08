@@ -1,8 +1,11 @@
 import SwiftUI
 
 struct Login: View {
+    @StateObject var viewModel = Registrar()
     @State private var username: String = ""
     @State private var password: String = ""
+    @State private var shouldNavigateToPokeView = false
+
     
     var body: some View {
         NavigationView {
@@ -47,6 +50,17 @@ struct Login: View {
                         .padding(.bottom, 100)
                     
                     NavigationLink(destination: Text("Next View")) {
+
+                    }
+                    Button(action: {
+                        viewModel.iniciarSesion(userInfo: username, pass: password) { isAuthenticated in
+                            if isAuthenticated {
+                                shouldNavigateToPokeView = true
+                            } else {
+                                print("Error al iniciar sesión")
+                            }
+                        }
+                    }) {
                         Text("Iniciar sesión")
                             .fontWeight(.bold)
                             .padding(.horizontal, 20)
@@ -55,7 +69,11 @@ struct Login: View {
                             .background(Color(red: 0.345, green: 0.565, blue: 0.898))
                             .cornerRadius(26)
                     }
-                    
+                    .padding(.top)
+
+                    NavigationLink(destination: PokedexView(), isActive: $shouldNavigateToPokeView) {
+                        EmptyView()
+                    }
                 }
                 .padding(.top, -110)
             }
