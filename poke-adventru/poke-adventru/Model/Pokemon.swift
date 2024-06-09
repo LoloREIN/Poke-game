@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import SwiftUI
+
 
 struct PokemonListResponse: Codable {
     var results: [PokemonResult]
@@ -19,13 +21,13 @@ struct PokemonResult: Codable {
 
 struct Pokemon: Codable, Identifiable {
     var id: UInt16
-    var idToSort : UInt16?
     var name: String
     var types: [TypeElement]?
     var sprites: Sprites?
     var stats: [StatElement]?
     var abilities: [AbilityElement]?
     var owned : Bool?
+    
 }
 
 struct TypeElement: Codable {

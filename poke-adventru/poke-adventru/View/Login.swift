@@ -8,7 +8,7 @@ struct Login: View {
 
     
     var body: some View {
-        NavigationView {
+        //NavigationView {
             ZStack {
                 Color.black
                     .ignoresSafeArea()
@@ -77,7 +77,7 @@ struct Login: View {
                 }
                 .padding(.top, -110)
             }
-        }
+        //}
     }
 }
 

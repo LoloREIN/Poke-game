@@ -8,7 +8,6 @@
 import Foundation
 
 class PokemonViewModel: ObservableObject {
-    private var contador : UInt16 = 0
     private var pokemonListTemporal: [PokemonResult] = []
     @Published var pokemonList = [Pokemon]()
     
@@ -61,10 +60,8 @@ class PokemonViewModel: ObservableObject {
                     var pokemon = try JSONDecoder().decode(Pokemon.self, from: data)
                     pokemon.name = pokemonResult.name
                     DispatchQueue.main.async {
-                        pokemon.idToSort = self.contador
-                        self.contador += 1;
                         let pokemonToAdd = pokemon
-                        self.pokemonList.insert(pokemonToAdd, at: Int(pokemonToAdd.idToSort!))
+                        self.pokemonList.append(pokemonToAdd)
                     }
                 } catch {
                     print("Error en el JSON del Pokémon: \(error.localizedDescription)")
