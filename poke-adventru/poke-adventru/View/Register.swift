@@ -6,6 +6,7 @@ struct Register: View {
     @State private var selectedCountry = "🇲🇽"
     @State private var username: String = ""
     @State private var password: String = ""
+    @State private var email: String = ""
     @State private var showModal: Bool = false // Variable de estado para controlar el modal
     
     var body: some View {
@@ -42,8 +43,29 @@ struct Register: View {
                         .multilineTextAlignment(.center)
                         .padding(5)
                 }
+                Text("Ingresa un correo electrónico")
+                    .foregroundColor(.white)
+                    .fontWeight(.bold)
+                    .padding(.top, 10)
+                    .font(.system(size: 20))
+                ZStack {
+                    if email.isEmpty {
+                        Text("correo electrónico")
+                            .foregroundColor(.gray)
+                            .fontWeight(.bold)
+                            .font(.system(size: 20))
+                            .padding(.leading, 5)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .padding(.bottom, 10)
+                    }
+                    TextField("", text: $email)
+                        .foregroundColor(.white)
+                        .font(.system(size: 20))
+                        .multilineTextAlignment(.center)
+                        .padding(5)
+                        .padding(.bottom, 15)
+                }
                 .padding(.horizontal, 20)
-                .padding(.top, 5)
                 Text("Nacionalidad")
                     .foregroundColor(.white)
                     .fontWeight(.bold)
@@ -94,10 +116,20 @@ struct Register: View {
                     viewModel.password = password
                     if selectedCountry == "🇲🇽"{
                         viewModel.country = "Mexico"
-                    }else{
+                    }
+                    else if selectedCountry == "🇫🇷"{
+                        viewModel.country = "France"
+                    }
+                    else if selectedCountry == "🇯🇵"{
+                        viewModel.country = "Japan"
+                    }
+                    else if selectedCountry == "🇹🇼"{
+                        viewModel.country = "Taiwan"
+                    }
+                    else{
                         viewModel.country = "Fuchi"
                     }
-                    viewModel.email = "0236847@gmail.com"
+                    viewModel.email = email
                     viewModel.registrar_usuario()
                     showModal = true
                 }) {

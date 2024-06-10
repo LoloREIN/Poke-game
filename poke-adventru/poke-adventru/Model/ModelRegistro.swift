@@ -1,9 +1,3 @@
-//
-//  Model.swift
-//  Inicio
-//
-//  Created by Alexia Gizmo on 07/06/24.
-//
 
 import Foundation
 import Firebase

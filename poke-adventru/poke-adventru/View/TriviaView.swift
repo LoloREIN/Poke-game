@@ -19,6 +19,9 @@ struct TriviaView: View {
                 Text("Congratulations, you completed the game! 🥳")
                 
                 Text("You scored \(triviaManager.score) out of \(triviaManager.length)")
+                if triviaManager.score == triviaManager.length{
+                    
+                }
                 
                 Button {
                     Task.init {
