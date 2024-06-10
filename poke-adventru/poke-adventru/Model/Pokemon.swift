@@ -8,6 +8,12 @@
 import Foundation
 import SwiftUI
 
+extension Pokemon: Equatable {
+    static func == (lhs: Pokemon, rhs: Pokemon) -> Bool {
+        return lhs.id == rhs.id // Assuming `id` is a unique identifier for each Pokemon
+    }
+}
+
 
 struct PokemonListResponse: Codable {
     var results: [PokemonResult]

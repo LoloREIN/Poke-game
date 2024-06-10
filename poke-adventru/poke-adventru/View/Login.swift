@@ -5,8 +5,8 @@ struct Login: View {
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var shouldNavigateToPokeView = false
+    @StateObject var triviaManager = TriviaManager()
 
-    
     var body: some View {
         //NavigationView {
             ZStack {
@@ -49,9 +49,6 @@ struct Login: View {
                         .frame(maxWidth: 200, maxHeight: 100)
                         .padding(.bottom, 100)
                     
-                    NavigationLink(destination: Text("Next View")) {
-
-                    }
                     Button(action: {
                         viewModel.iniciarSesion(userInfo: username, pass: password) { isAuthenticated in
                             if isAuthenticated {
@@ -71,7 +68,8 @@ struct Login: View {
                     }
                     .padding(.top)
 
-                    NavigationLink(destination: PokedexView(), isActive: $shouldNavigateToPokeView) {
+                    // The navigation link that is conditionally activated
+                    NavigationLink(destination: TriviaStart().environmentObject(triviaManager), isActive: $shouldNavigateToPokeView) {
                         EmptyView()
                     }
                 }

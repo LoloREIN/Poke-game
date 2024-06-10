@@ -43,14 +43,16 @@ struct Destino: View {
                         
                         List {
                             ForEach(pokemon.stats ?? [], id: \.stat.name) { stat in
-                                HStack
-                                {
+                                HStack {
                                     Text(stat.stat.name)
+                                        .bold()
                                     Text(String(stat.base_stat))
+                                        .foregroundColor(.gray)
                                     Spacer()
                                 }
                             }
-                        }.listStyle(PlainListStyle())
+                        }
+                        .listStyle(PlainListStyle())
                             
                         
                         HStack

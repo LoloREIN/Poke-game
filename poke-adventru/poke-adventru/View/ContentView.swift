@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var triviaManager: TriviaManager
     var body: some View {
         NavigationView {
             SliderView()
@@ -9,6 +10,7 @@ struct ContentView: View {
 }
 
 struct SliderView: View {
+    @EnvironmentObject var triviaManager: TriviaManager
     @State private var buttonColorIndex = 0
     let colors: [Color] = [
         Color(red: 0.788, green: 0.569, blue: 0.341),
